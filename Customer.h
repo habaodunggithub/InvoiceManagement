@@ -4,18 +4,21 @@
 #include <string>
 
 class Customer {
-private:
-    std::string name;
-    std::string phoneNumber;
-    std::string address;
 public:
     Customer();
     Customer(const std::string&, const std::string&, const std::string&);
     ~Customer();
 
-    std::string getName();
-    std::string getPhoneNumber();
-    std::string getAddress();
+    const std::string& getName() const;
+    void setName(const std::string&);
+    const std::string& getPhoneNumber() const;
+    void setPhoneNumber(const std::string&);
+    const std::string& getAddress() const;
+    void setAddress(const std::string&);
     void enterInfo();
-    void info();
+    void info() const;
+private:
+    std::string name;
+    std::string phoneNumber;
+    std::string address;
 };

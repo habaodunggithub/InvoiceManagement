@@ -4,21 +4,21 @@
 #include <string>
 
 class Product {
-private:
-    std::string id;
-    std::string name;
-    int quantity;
-    double price;
 public:
     Product();
     Product(const std::string&, const std::string&, int, double);
     ~Product();
 
-    std::string getId();
-    std::string getName();
-    int getQuantity();
-    double getPrice();
+    const std::string& getId() const;
+    const std::string& getName() const;
+    int getQuantity() const ;
+    double getPrice() const;
     void enterInfo();
-    void info();
-    double totalPrice();
+    void info() const;
+    double totalPrice() const;
+private:
+    std::string id;
+    std::string name;
+    int quantity;
+    double price;
 };

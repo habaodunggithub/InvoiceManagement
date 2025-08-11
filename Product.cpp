@@ -2,24 +2,33 @@
 
 Product::Product() {}
 
-Product::Product(const std::string& id, const std::string& name, int quantity, double price) 
-    : id(id), name(name), quantity(quantity), price(price) {}
+Product::Product(
+        const std::string& id,
+        const std::string& name, 
+        int quantity, 
+        double price
+    )
+    : id(id)
+    , name(name)
+    , quantity(quantity)
+    , price(price)
+    {}
 
 Product::~Product() {}
 
-std::string Product::getId() {
+const std::string& Product::getId() const {
     return id;
 }
 
-std::string Product::getName() {
+const std::string& Product::getName() const {
     return name;
 }
 
-int Product::getQuantity() {
+int Product::getQuantity() const {
     return quantity;
 }
 
-double Product::getPrice() {
+double Product::getPrice() const {
     return price;
 }
 
@@ -37,14 +46,14 @@ void Product::enterInfo() {
     std::cin >> price;
 }
 
-void Product::info() {
+void Product::info() const {
     std::cout << "ID: " << id << "\n";
     std::cout << "Name: " << name << "\n";
     std::cout << "Quantity: " << quantity << "\n";
     std::cout << "Price: " << price << "\n";
 }
 
-double Product::totalPrice() {
-    return quantity*price;
+double Product::totalPrice() const {
+    return getQuantity()*getPrice();
 }
 

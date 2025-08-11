@@ -13,6 +13,10 @@ void Invoice::enterCustomerInfo() {
     customer.enterInfo();
 }
 
+double Invoice::getTotalPrice() const {
+    return totalPrice;
+}
+
 void Invoice::enterProductList() {
     int choice = 1;
     std::cout << "---Enter product list---\n";
@@ -28,16 +32,16 @@ void Invoice::enterProductList() {
         std::cin >> choice;
         std::cin.ignore();
     }
+    calculateTotalPrice();
 }
 
 void Invoice::calculateTotalPrice() {
-    totalPrice = 0.0;
     for (Product& product : productList) {
         totalPrice += product.totalPrice();
     }
 }
 
-void Invoice::printInvoice() {
+void Invoice::printInvoice() const {
     std::cout << "\n===== INVOICE " << id << " =====\n";
     std::cout << "Customer: " << customer.getName() << "\n";
     std::cout << "Phone: " << customer.getPhoneNumber() << "\n";
@@ -49,13 +53,12 @@ void Invoice::printInvoice() {
         std::cout << std::left << std::setw(15) << productList[i].getName();
         std::cout << "x" << std::left << std::setw(5) << productList[i].getQuantity();
         std::cout << productList[i].getPrice() << " => " << productList[i].totalPrice() << "\n";
-        totalPrice += productList[i].totalPrice();
     }
 
-    std::cout << "\nTotal: " << totalPrice << " VND\n";
+    std::cout << "\nTotal: " << getTotalPrice() << " VND\n";
     std::cout << "============================\n";
 }
 
-void Invoice::exportInvoice(const char*& fileName) {
+void Invoice::exportInvoice(const char*& fileName) const {
     return;
 }
